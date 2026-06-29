@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>阅读阅多 - 您的专属自定义书源阅读伙伴</title>
+<title>阅读阅多 - 本地小说阅读与 AI 听书工具</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
@@ -15,8 +15,11 @@ tailwind.config={
 theme:{
 extend:{
 colors:{
-primary:'#4F46E5',
-secondary:'#10B981'
+primary:'#0F5132',
+secondary:'#0EA5E9',
+accent:'#F59E0B',
+ink:'#102318',
+paper:'#F7FAF6'
 },
 borderRadius:{
 'none':'0px',
@@ -29,515 +32,345 @@ DEFAULT:'8px',
 '3xl':'32px',
 'full':'9999px',
 'button':'8px'
-}
 },
-fontFamily: {
-sans: ['Noto Sans SC', 'sans-serif'],
+fontFamily:{
+sans:['Noto Sans SC','sans-serif']
+}
 }
 }
 }
 </script>
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
-body {
-font-family: 'Noto Sans SC', sans-serif;
+body { font-family: 'Noto Sans SC', sans-serif; }
+.hero-grid {
+background:
+radial-gradient(circle at 12% 20%, rgba(14,165,233,.14), transparent 26%),
+radial-gradient(circle at 86% 12%, rgba(245,158,11,.16), transparent 24%),
+linear-gradient(135deg, #f7faf6 0%, #eef7f0 48%, #f8fbff 100%);
 }
-.dropdown {
-display: none;
-position: absolute;
-top: 100%;
-right: 0;
-min-width: 180px;
-z-index: 10;
+.phone-shot {
+box-shadow: 0 24px 60px rgba(16,35,24,.18);
 }
-.dropdown-container:hover .dropdown {
-display: block;
-}
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
--webkit-appearance: none;
-margin: 0;
-}
-.hero-section {
-background-image: url('https://raw.githubusercontent.com/yueduyueyou/yueduyueyou/refs/heads/main/1.png');
-background-size: cover;
-background-position: center;
+.feature-card {
+transition: transform .25s ease, box-shadow .25s ease;
 }
 .feature-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+transform: translateY(-4px);
+box-shadow: 0 16px 36px rgba(16,35,24,.10);
+}
+@media (max-width: 768px) {
+.desktop-nav { display: none; }
 }
 </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-<!-- 导航栏 -->
-<header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50">
+<body class="bg-paper text-ink">
+<header class="fixed w-full bg-white/90 backdrop-blur border-b border-emerald-900/10 z-50">
 <div class="container mx-auto px-4 py-3 flex justify-between items-center">
 <a href="#" class="font-['Pacifico'] text-2xl text-primary">阅读阅多</a>
-<nav class="flex items-center space-x-8">
-<div class="dropdown-container relative">
-<button class="flex items-center space-x-1 py-2 text-gray-700 hover:text-primary transition-colors !rounded-button whitespace-nowrap">
-<span>产品</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-arrow-down-s-line"></i>
-</div>
-</button>
-<div class="dropdown bg-white shadow-lg rounded p-2">
-<a href="#product-intro" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">产品介绍</a>
-<a href="#faq" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">常见问题</a>
-<a href="https://yueduyueyou.github.io/yueduyueyou/privacy.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">隐私协议</a>
-<a href="https://yueduyueyou.github.io/yueduyueyou/agreement.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">用户协议</a>
-</div>
-</div>  
-<div class="dropdown-container relative">
-<button class="flex items-center space-x-1 py-2 text-gray-700 hover:text-primary transition-colors !rounded-button whitespace-nowrap">
-<span>会员服务</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-arrow-down-s-line"></i>
-</div>
-</button>
-<div class="dropdown bg-white shadow-lg rounded p-2">
-<a href="#member-faq" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">常见问题</a>
-<a href="https://yueduyueyou.github.io/yueduyueyou/member-agreement.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">会员协议</a>
-<a href="https://yueduyueyou.github.io/yueduyueyou/auto-renewal-agreement.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded">自动续费协议</a>
-</div>
-</div>
-<a href="book-source.html" class="text-primary font-medium">书源获取</a>
-<button class="bg-primary text-white px-6 py-2 rounded-button hover:bg-opacity-90 transition-all shadow-sm !rounded-button whitespace-nowrap">
-立即下载
-</button>
+<nav class="desktop-nav flex items-center gap-7 text-sm font-medium">
+<a href="#product-intro" class="text-gray-700 hover:text-primary transition-colors">产品介绍</a>
+<a href="#ai-reading" class="text-gray-700 hover:text-primary transition-colors">AI 阅读</a>
+<a href="#listening" class="text-gray-700 hover:text-primary transition-colors">听书</a>
+<a href="book-source.html" class="text-gray-700 hover:text-primary transition-colors">本地阅读</a>
+<a href="#member-faq" class="text-gray-700 hover:text-primary transition-colors">会员服务</a>
+<a href="#download" class="bg-primary text-white px-5 py-2 rounded-button hover:bg-emerald-900 transition-colors whitespace-nowrap">立即下载</a>
 </nav>
+<a href="#download" class="md:hidden bg-primary text-white px-4 py-2 rounded-button text-sm">下载</a>
 </div>
 </header>
-<!-- Hero 区域 -->
-<section class="hero-section pt-24 pb-16 relative">
-<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
-<div class="container mx-auto px-4 relative z-10">
-<div class="w-full md:w-1/2 py-16">
-<h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-阅读，让生活更加丰富多彩
+
+<section class="hero-grid pt-24 pb-16 overflow-hidden">
+<div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="py-10">
+<div class="inline-flex items-center gap-2 bg-white/80 border border-emerald-900/10 rounded-full px-4 py-2 mb-6 text-sm text-primary">
+<i class="ri-book-read-line"></i>
+<span>本地小说阅读工具</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
+本地小说阅读，也可以更智能
 </h1>
-<p class="text-lg md:text-xl text-gray-600 mb-8">
-阅读阅多，一款单纯阅读工具，没有服务器，仅仅依靠用户自定义阅读书源的软件。适配海量的《阅读》书源，个性化定义阅读器，让您随时随地享受阅读的乐趣。
+<p class="text-lg md:text-xl text-gray-700 leading-8 mb-8 max-w-2xl">
+阅读阅多支持导入本地小说，提供多角色听书、AI 书籍处理、章节问答总结、自由阅读主题和排版设置，让阅读、听书和理解故事都更顺手。
 </p>
 <div class="flex flex-wrap gap-4">
-<button class="bg-black text-white px-8 py-3 rounded-button hover:bg-opacity-90 transition-all shadow-md flex items-center !rounded-button whitespace-nowrap">
-<div class="w-5 h-5 mr-2 flex items-center justify-center">
-<i class="ri-apple-fill"></i>
-</div>
+<a href="#download" class="bg-black text-white px-7 py-3 rounded-button hover:bg-gray-900 transition-colors shadow-md flex items-center whitespace-nowrap">
+<i class="ri-apple-fill mr-2 text-xl"></i>
 App Store 下载
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- 特色功能 -->
-<section class="py-16 bg-white" id="product-intro">
-<div class="container mx-auto px-4">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold mb-4">为什么选择阅读阅多</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">我们致力于打造最佳阅读体验，让每一位用户都能享受到高品质的阅读服务</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- 特色功能卡片 1 -->
-<div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300">
-<div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-<div class="w-6 h-6 flex items-center justify-center text-primary">
-<i class="ri-book-open-line"></i>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-3">支持海量《阅读》书源</h3>
-<p class="text-gray-600">基本支持80%的阅读源，订阅源，HttpTts语音源。能让你无忧无虑的选择iOS里体验阅读的快乐</p>
-</div>
-<!-- 特色功能卡片 2 -->
-<div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300">
-<div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-<div class="w-6 h-6 flex items-center justify-center text-secondary">
-<i class="ri-ai-generate"></i>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-3">自定义阅读器</h3>
-<p class="text-gray-600">自由配置阅读器界面，支持各种字体背景切换，行间距等大量功能等你体验</p>
-</div>
-<!-- 特色功能卡片 3 -->
-<div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300">
-<div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-<div class="w-6 h-6 flex items-center justify-center text-purple-600">
-<i class="ri-eye-line"></i>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-3">护眼阅读模式</h3>
-<p class="text-gray-600">多种阅读模式选择，包括日间、夜间和护眼模式，减轻长时间阅读带来的视觉疲劳。</p>
-</div>
-<!-- 特色功能卡片 4 -->
-<div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300">
-<div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-<div class="w-6 h-6 flex items-center justify-center text-yellow-600">
-<i class="ri-bookmark-line"></i>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-3">自由导入同步书源书籍</h3>
-<p class="text-gray-600">支持自由导入书源，同步您的书籍和阅读进度，让您的阅读体验更加自由和便捷。<a href="book-source.html" class="text-primary block mt-2 hover:underline">了解如何获取书源 →</a></p>
-</div>
-<!-- 特色功能卡片 5 -->
-<div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300">
-<div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
-<div class="w-6 h-6 flex items-center justify-center text-red-600">
-<i class="ri-community-line"></i>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-3">订阅源社区</h3>
-<p class="text-gray-600">支持大部分订阅源，用户可以在App里畅快的订阅各种网站信息</p>
-</div>
-<!-- 特色功能卡片 6 -->
-<div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300">
-<div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-<div class="w-6 h-6 flex items-center justify-center text-indigo-600">
-<i class="ri-vip-crown-line"></i>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-3">会员特权</h3>
-<p class="text-gray-600">尊享会员特权，包括无广告阅读、背景图设置、听书下载等多项权益，提升您的阅读体验。</p>
-</div>
-</div>
-</div>
-</section>
-<!-- 应用展示 -->
-<section class="py-16 bg-gray-50">
-<div class="container mx-auto px-4">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold mb-4">精心设计的阅读体验</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">简洁优雅的界面设计，让您专注于阅读本身，享受沉浸式的阅读体验</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="bg-white p-4 rounded-lg shadow-md overflow-hidden">
-<img src="https://raw.githubusercontent.com/yueduyueyou/yueduyueyou/refs/heads/main/3.jpg" alt="阅读阅多应用界面展示" class="w-full h-auto rounded object-cover object-top">
-<div class="p-4">
-<h3 class="text-xl font-semibold mb-2">简洁优雅的阅读界面</h3>
-<p class="text-gray-600">精心设计的排版和布局，让您的阅读体验更加舒适自然。</p>
-</div>
-</div>
-<div class="bg-white p-4 rounded-lg shadow-md overflow-hidden">
-<img src="https://raw.githubusercontent.com/yueduyueyou/yueduyueyou/refs/heads/main/2.png" alt="阅读阅多书库界面" class="w-full h-auto rounded object-cover object-top">
-<div class="p-4">
-<h3 class="text-xl font-semibold mb-2">自由编写书源</h3>
-<p class="text-gray-600">海量书源随心所写，用户自定义阅读内容。</p>
-</div>
-</div>
-</div>
-</div>
-
-<!-- 常见问题 -->
-<section class="py-16 bg-gray-50" id="faq">
-<div class="container mx-auto px-4">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold mb-4">常见问题</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">我们整理了一些用户常见的问题，希望能帮助您更好地了解阅读阅多</p>
-</div>
-<div class="max-w-3xl mx-auto">
-<div class="mb-6 bg-white p-6 rounded-lg shadow-sm">
-<h3 class="text-xl font-semibold mb-3">阅读阅多支持哪些设备？</h3>
-<p class="text-gray-600">阅读阅多目前支持 iOS  系统的手机和平板设备。我们也计划在未来推出更多版本，敬请期待。</p>
-</div>
-<div class="mb-6 bg-white p-6 rounded-lg shadow-sm">
-<h3 class="text-xl font-semibold mb-3">关于听书语音功能？</h3>
-<p class="text-gray-600">支持自动阅读，语音朗读。其中语音朗读，支持微软语音，系统语音，还支持用户使用外部的TTS源。
-支持在线试听，请发掘你喜欢的声音来朗读。使用微软语音和外部TTS源会提前预下载后续的声音。切换的时候可能会有误差，请等待即可。</p>
-</div>
-<div class="mb-6 bg-white p-6 rounded-lg shadow-sm">
-<h3 class="text-xl font-semibold mb-3">开通会员包含哪些特权？</h3>
-<p class="text-gray-600">会员特权包括：无广告阅读体验、调整请求并发数、无限下载次数、阅读背景主题、非系统听书等。详细信息请查看会员服务页面。</p>
-</div>
-<div class="mb-6 bg-white p-6 rounded-lg shadow-sm">
-<h3 class="text-xl font-semibold mb-3">如何取消会员自动续费？</h3>
-<p class="text-gray-600">苹果应用内支付（IAP支付，in-apppurchase）自动续费用户退订方法如下：打开苹果手机“设置”-＞进入“iTunesStore与AppStore”->点击“ApplelD”，选择“查看AppleID”，进入“账户设置”页面，点击“订阅”，洗择读不舍手会员取消订阅即可。如果您未在订阅期结束的至少24小时前取消订阅，此订阅将会自动续订。</p>
-</div>
-<div class="mb-6 bg-white p-6 rounded-lg shadow-sm">
-<h3 class="text-xl font-semibold mb-3">阅读书源如何获取？</h3>
-<p class="text-gray-600">1.用户自己根据书源规则自行写源。2.用户可以通过浏览器搜索"源仓库"、"阅读书源"，或者在一些书友论坛等地方获取书源的.json文件。
-    3.可以通过订源功能，获取部分《阅读》的订阅源，部分包含一些书源的网址，可以在里面下载并导入App。<a href="book-source.html" class="text-primary hover:underline ml-2">查看详细书源获取指南 →</a></p>
-</div>
-</div>
-</div>
-</section>
-<!-- 会员服务 -->
-<section class="py-16 bg-white" id="member-faq">
-<div class="container mx-auto px-4">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold mb-4">会员服务</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">成为会员，享受更优质的阅读体验</p>
-<p class="text-gray-600 max-w-2xl mx-auto">如购买黄金会员后，再购买钻石会员，会将黄金会员的时长减半添加到钻石会员，同理钻石会员升级成王者会员也是如此</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- 黄金会员 -->
-<div class="bg-white p-6 rounded-lg shadow-md border border-yellow-400 flex flex-col relative overflow-hidden">
-<div class="absolute -right-12 top-6 bg-yellow-400 text-white px-12 py-1 rotate-45">
-推荐会员
-</div>
-<div class="mb-6">
-<h3 class="text-xl font-semibold mb-4 flex items-center">
-<div class="w-6 h-6 flex items-center justify-center text-yellow-400 mr-2">
-<i class="ri-vip-crown-fill"></i>
-</div>
-黄金会员
-</h3>
-<div class="space-y-3">
-<div class="flex items-center justify-between p-2 bg-yellow-50 rounded">
-<span>月付</span>
-<span class="font-semibold text-yellow-600">¥8/月</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-yellow-50 rounded">
-<span>半年付</span>
-<span class="font-semibold text-yellow-600">¥42/半年</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-yellow-50 rounded">
-<span>年付</span>
-<span class="font-semibold text-yellow-600">¥78/年</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-yellow-50 rounded">
-<span>永久</span>
-<span class="font-semibold text-yellow-600">¥399</span>
-</div>
-</div>
-</div>
-<ul class="space-y-3 mb-8 flex-grow">
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>阅读免广告体验（除部分听书引擎需要解锁外，APP内无广告）</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>搜索等功能更多并发权益</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>无限下载次数</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>阅读背景主题</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>系统、网络听书引擎无限畅听权益</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>部分听书引擎增加广告解锁次数</span>
-</li>
-</ul>
-<button class="w-full py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white rounded-button hover:opacity-90 transition-opacity shadow-md !rounded-button whitespace-nowrap">
-立即开通
-</button>
-</div>
-<!-- 钻石会员 -->
-<div class="bg-white p-6 rounded-lg shadow-md border-2 border-primary flex flex-col relative overflow-hidden">
-<div class="absolute -right-12 top-6 bg-primary text-white px-12 py-1 rotate-45">
-钻石会员
-</div>
-<div class="mb-6">
-<h3 class="text-xl font-semibold mb-4 flex items-center">
-<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
-<i class="ri-vip-diamond-fill"></i>
-</div>
-钻石会员
-</h3>
-<div class="space-y-3">
-<div class="flex items-center justify-between p-2 bg-primary/5 rounded">
-<span>月付</span>
-<span class="font-semibold text-primary">¥16/月</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-primary/5 rounded">
-<span>半年付</span>
-<span class="font-semibold text-primary">¥84/半年</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-primary/5 rounded">
-<span>年付</span>
-<span class="font-semibold text-primary">¥150/年</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-primary/5 rounded">
-<span>永久</span>
-<span class="font-semibold text-primary">¥788</span>
-</div>
-</div>
-</div>
-<ul class="space-y-3 mb-8 flex-grow">
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>阅读免广告体验</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>搜索等功能更多并发权益</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>无限下载次数</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>阅读背景主题</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>所有听书引擎免广告解锁</span>
-</li>
-</ul>
-<button class="w-full py-3 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors shadow-md !rounded-button whitespace-nowrap">
-立即开通
-</button>
-</div>
-<!-- 王者会员 -->
-<div class="bg-white p-6 rounded-lg shadow-md border-2 border-purple-600 flex flex-col relative overflow-hidden">
-<div class="absolute -right-12 top-6 bg-purple-600 text-white px-12 py-1 rotate-45">
-王者会员
-</div>
-<div class="mb-6">
-<h3 class="text-xl font-semibold mb-4 flex items-center">
-<div class="w-6 h-6 flex items-center justify-center text-purple-600 mr-2">
-<i class="ri-vip-crown-2-fill"></i>
-</div>
-王者会员
-</h3>
-<div class="space-y-3">
-<div class="flex items-center justify-between p-2 bg-purple-50 rounded">
-<span>月付</span>
-<span class="font-semibold text-purple-600">¥30/月</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-purple-50 rounded">
-<span>半年付</span>
-<span class="font-semibold text-purple-600">¥160/半年</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-purple-50 rounded">
-<span>年付</span>
-<span class="font-semibold text-purple-600">¥300/年</span>
-</div>
-<div class="flex items-center justify-between p-2 bg-purple-50 rounded">
-<span>永久</span>
-<span class="font-semibold text-purple-600">¥1488</span>
-</div>
-</div>
-</div>
-<ul class="space-y-3 mb-8 flex-grow">
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-purple-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>包含钻石会员全部权益</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-purple-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>后续新功能</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-purple-600 mt-0.5 mr-2">
-<i class="ri-check-line"></i>
-</div>
-<span>更好的支持并打赏开发者</span>
-</li>
-</ul>
-<button class="w-full py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-button hover:opacity-90 transition-opacity shadow-md !rounded-button whitespace-nowrap">
-立即开通
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- 下载区域 -->
-<section class="py-16 bg-primary bg-opacity-5">
-<div class="container mx-auto px-4">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold mb-4">立即下载，开启阅读之旅</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">随时随地，尽享阅读乐趣</p>
-</div>
-<div class="flex flex-col md:flex-row items-center justify-center">
-<a href="#" class="flex items-center bg-black text-white px-6 py-3 rounded-button hover:bg-opacity-80 transition-colors !rounded-button whitespace-nowrap">
-<div class="w-8 h-8 flex items-center justify-center mr-3">
-<i class="ri-apple-fill ri-xl"></i>
-</div>
-<div>
-<div class="text-xs">下载于</div>
-<div class="text-lg font-semibold">App Store</div>
-</div>
+</a>
+<a href="book-source.html" class="bg-white text-primary px-7 py-3 rounded-button border border-emerald-900/15 hover:border-primary transition-colors shadow-sm whitespace-nowrap">
+查看本地阅读指南
 </a>
 </div>
+<div class="grid grid-cols-3 gap-4 mt-10 max-w-xl">
+<div class="bg-white/70 rounded-lg p-4 border border-white">
+<div class="text-2xl font-bold text-primary">AI</div>
+<div class="text-sm text-gray-600 mt-1">总结问答</div>
+</div>
+<div class="bg-white/70 rounded-lg p-4 border border-white">
+<div class="text-2xl font-bold text-secondary">多角色</div>
+<div class="text-sm text-gray-600 mt-1">沉浸听书</div>
+</div>
+<div class="bg-white/70 rounded-lg p-4 border border-white">
+<div class="text-2xl font-bold text-accent">自由</div>
+<div class="text-sm text-gray-600 mt-1">主题排版</div>
+</div>
+</div>
+</div>
+<div class="relative min-h-[520px] lg:min-h-[620px]">
+<img src="3.jpg" alt="阅读阅多阅读器主题编辑界面" class="phone-shot absolute right-0 top-0 w-[56%] max-w-[300px] rounded-[32px] border border-white/80">
+<img src="2.png" alt="阅读阅多 AI 问答界面" class="phone-shot absolute left-0 top-16 w-[52%] max-w-[280px] rounded-[32px] border border-white/80">
+<img src="1.png" alt="阅读阅多小说阅读界面" class="phone-shot absolute left-[26%] bottom-0 w-[54%] max-w-[290px] rounded-[32px] border border-white/80">
+</div>
 </div>
 </section>
-<!-- 页脚 -->
-<footer class="bg-gray-800 text-white py-12">
+
+<section class="py-16 bg-white" id="product-intro">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<p class="text-primary font-semibold mb-3">核心能力</p>
+<h2 class="text-3xl md:text-4xl font-bold mb-4">从导入到理解，一套完整阅读流程</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">围绕本地小说阅读重新设计：管理书籍、沉浸阅读、听书播放、AI 辅助和界面自定义都在同一个应用里完成。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="feature-card bg-white p-6 rounded-lg border border-emerald-900/10 shadow-sm">
+<div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4 text-primary text-2xl"><i class="ri-folder-open-line"></i></div>
+<h3 class="text-xl font-semibold mb-3">本地小说管理</h3>
+<p class="text-gray-600 leading-7">导入本地小说文件后统一管理阅读进度、最近阅读和未读内容，适合把自己的小说库随身携带。</p>
+</div>
+<div class="feature-card bg-white p-6 rounded-lg border border-sky-900/10 shadow-sm" id="listening">
+<div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-4 text-secondary text-2xl"><i class="ri-headphone-line"></i></div>
+<h3 class="text-xl font-semibold mb-3">多角色听书</h3>
+<p class="text-gray-600 leading-7">按人物和旁白切换不同声音，让对话、旁白和剧情推进更有层次，通勤和睡前也能继续阅读。</p>
+</div>
+<div class="feature-card bg-white p-6 rounded-lg border border-amber-900/10 shadow-sm" id="ai-reading">
+<div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 text-accent text-2xl"><i class="ri-sparkling-line"></i></div>
+<h3 class="text-xl font-semibold mb-3">AI 书籍处理</h3>
+<p class="text-gray-600 leading-7">对书籍内容进行处理和理解，帮助提炼情节、角色关系和重点信息，减少回看成本。</p>
+</div>
+<div class="feature-card bg-white p-6 rounded-lg border border-indigo-900/10 shadow-sm">
+<div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 text-indigo-600 text-2xl"><i class="ri-chat-3-line"></i></div>
+<h3 class="text-xl font-semibold mb-3">问答与章节总结</h3>
+<p class="text-gray-600 leading-7">可针对当前章节或整本书提问，快速生成章节总结、全书总结和阅读思路梳理。</p>
+</div>
+<div class="feature-card bg-white p-6 rounded-lg border border-rose-900/10 shadow-sm">
+<div class="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center mb-4 text-rose-600 text-2xl"><i class="ri-text-spacing"></i></div>
+<h3 class="text-xl font-semibold mb-3">阅读主题与排版强化</h3>
+<p class="text-gray-600 leading-7">自由调整字体、字号、行距、背景、页眉页脚和图片背景，让长时间阅读更舒适。</p>
+</div>
+<div class="feature-card bg-white p-6 rounded-lg border border-teal-900/10 shadow-sm">
+<div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 text-teal-600 text-2xl"><i class="ri-palette-line"></i></div>
+<h3 class="text-xl font-semibold mb-3">应用主题自定义</h3>
+<p class="text-gray-600 leading-7">阅读器之外，应用整体主题也可调整，列表、工具栏和阅读环境保持一致的视觉风格。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-paper">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<p class="text-primary font-semibold mb-3">应用展示</p>
+<h2 class="text-3xl md:text-4xl font-bold mb-4">把真实阅读场景放在前面</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">从阅读器工具、AI 助手到主题编辑，每个功能都服务于更稳定、更个人化的小说阅读体验。</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg overflow-hidden shadow-sm border border-emerald-900/10">
+<img src="1.png" alt="阅读器划线和工具栏" class="w-full h-[420px] object-cover object-top">
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">沉浸阅读与文本工具</h3>
+<p class="text-gray-600 leading-7">阅读时可复制、笔记、分享、搜索、净化、语音和查词，处理文字不离开当前章节。</p>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-sm border border-sky-900/10">
+<img src="2.png" alt="AI 阅读助手" class="w-full h-[420px] object-cover object-top">
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">AI 助手随书可用</h3>
+<p class="text-gray-600 leading-7">未读书籍、阅读进度、最近阅读和推荐阅读都可以快速提问，并生成章节或全书总结。</p>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-sm border border-amber-900/10">
+<img src="3.jpg" alt="主题编辑界面" class="w-full h-[420px] object-cover object-top">
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">主题和排版细节可调</h3>
+<p class="text-gray-600 leading-7">背景色、背景图片、透明度、文字颜色、页眉页脚和图片位置都能细致设置。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">适合这些阅读方式</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">阅读阅多不是单一阅读器，而是围绕小说内容的阅读、听书、理解和个性化工具箱。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-paper p-6 rounded-lg border border-emerald-900/10">
+<div class="flex text-accent mb-4"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+<p class="text-gray-700 leading-7 mb-5">"本地小说导入后可以直接读，阅读进度和排版都很稳定，最喜欢的是背景和字体能调到自己习惯的样子。"</p>
+<p class="font-semibold">林雨晴</p>
+<p class="text-sm text-gray-500 mt-1">资深读者</p>
+</div>
+<div class="bg-paper p-6 rounded-lg border border-sky-900/10">
+<div class="flex text-accent mb-4"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+<p class="text-gray-700 leading-7 mb-5">"多角色听书比单一朗读更有代入感，人物对话和旁白分开后，走路时听小说也能跟上剧情。"</p>
+<p class="font-semibold">张佳怡</p>
+<p class="text-sm text-gray-500 mt-1">听书用户</p>
+</div>
+<div class="bg-paper p-6 rounded-lg border border-amber-900/10">
+<div class="flex text-accent mb-4"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-line"></i></div>
+<p class="text-gray-700 leading-7 mb-5">"看长篇时 AI 总结很有用，忘了前面人物关系可以直接问，不需要翻很久找伏笔。"</p>
+<p class="font-semibold">陈明远</p>
+<p class="text-sm text-gray-500 mt-1">长篇小说读者</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-paper" id="faq">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">常见问题</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">围绕本地小说阅读、听书、AI 和自定义设置的常见问题。</p>
+</div>
+<div class="max-w-3xl mx-auto space-y-5">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">阅读阅多支持哪些设备？</h3>
+<p class="text-gray-600 leading-7">阅读阅多目前支持 iOS 系统的手机和平板设备，适合在 iPhone 和 iPad 上管理本地小说并持续阅读。</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">如何导入本地小说？</h3>
+<p class="text-gray-600 leading-7">可以通过系统文件、分享入口或下载后的本地文本文件导入。导入后即可在应用内管理书籍、阅读进度和最近阅读。</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">AI 功能能做什么？</h3>
+<p class="text-gray-600 leading-7">AI 阅读助手可用于章节总结、全书总结、阅读问答和思路整理。它适合快速回顾剧情、理解人物关系和整理阅读重点。</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">关于多角色听书功能？</h3>
+<p class="text-gray-600 leading-7">听书支持语音朗读和多角色播放，可根据人物、旁白和阅读场景切换声音，减少单一朗读带来的疲劳。</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">主题和排版可以调整哪些内容？</h3>
+<p class="text-gray-600 leading-7">可调整背景色、背景图片、文字颜色、字号、间距、页眉页脚、图片透明度和位置，也可以配置应用整体主题。</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">开通会员包含哪些特权？</h3>
+<p class="text-gray-600 leading-7">会员特权包括无广告阅读体验、更多 AI 与听书能力、主题背景设置、下载和高级自定义等权益。详细信息请查看会员服务区域。</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-emerald-900/10">
+<h3 class="text-xl font-semibold mb-3">如何取消会员自动续费？</h3>
+<p class="text-gray-600 leading-7">苹果应用内支付自动续费用户可在 iPhone 设置中进入 Apple ID 订阅管理页面取消。请在订阅期结束至少 24 小时前完成取消。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-white" id="member-faq">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<p class="text-primary font-semibold mb-3">会员服务</p>
+<h2 class="text-3xl md:text-4xl font-bold mb-4">解锁更完整的阅读体验</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">成为会员，获得更稳定的高级听书、AI 辅助、主题背景和阅读自定义能力。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-amber-400 flex flex-col">
+<h3 class="text-xl font-semibold mb-4 flex items-center text-amber-700"><i class="ri-vip-crown-fill mr-2"></i>黄金会员</h3>
+<div class="space-y-3 mb-6">
+<div class="flex items-center justify-between p-2 bg-amber-50 rounded"><span>月付</span><span class="font-semibold text-amber-700">¥8/月</span></div>
+<div class="flex items-center justify-between p-2 bg-amber-50 rounded"><span>半年付</span><span class="font-semibold text-amber-700">¥42/半年</span></div>
+<div class="flex items-center justify-between p-2 bg-amber-50 rounded"><span>年付</span><span class="font-semibold text-amber-700">¥78/年</span></div>
+<div class="flex items-center justify-between p-2 bg-amber-50 rounded"><span>永久</span><span class="font-semibold text-amber-700">¥399</span></div>
+</div>
+<ul class="space-y-3 mb-8 flex-grow text-gray-700">
+<li><i class="ri-check-line text-amber-700 mr-2"></i>阅读免广告体验</li>
+<li><i class="ri-check-line text-amber-700 mr-2"></i>更多阅读处理额度</li>
+<li><i class="ri-check-line text-amber-700 mr-2"></i>高级阅读背景主题</li>
+<li><i class="ri-check-line text-amber-700 mr-2"></i>系统与网络听书权益</li>
+</ul>
+<a href="#download" class="w-full text-center py-3 bg-amber-500 text-white rounded-button hover:bg-amber-600 transition-colors">立即开通</a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md border-2 border-primary flex flex-col">
+<h3 class="text-xl font-semibold mb-4 flex items-center text-primary"><i class="ri-vip-diamond-fill mr-2"></i>钻石会员</h3>
+<div class="space-y-3 mb-6">
+<div class="flex items-center justify-between p-2 bg-emerald-50 rounded"><span>月付</span><span class="font-semibold text-primary">¥16/月</span></div>
+<div class="flex items-center justify-between p-2 bg-emerald-50 rounded"><span>半年付</span><span class="font-semibold text-primary">¥84/半年</span></div>
+<div class="flex items-center justify-between p-2 bg-emerald-50 rounded"><span>年付</span><span class="font-semibold text-primary">¥150/年</span></div>
+<div class="flex items-center justify-between p-2 bg-emerald-50 rounded"><span>永久</span><span class="font-semibold text-primary">¥788</span></div>
+</div>
+<ul class="space-y-3 mb-8 flex-grow text-gray-700">
+<li><i class="ri-check-line text-primary mr-2"></i>包含黄金会员权益</li>
+<li><i class="ri-check-line text-primary mr-2"></i>更完整的 AI 阅读助手能力</li>
+<li><i class="ri-check-line text-primary mr-2"></i>多角色听书高级权益</li>
+<li><i class="ri-check-line text-primary mr-2"></i>更多主题与排版自定义</li>
+</ul>
+<a href="#download" class="w-full text-center py-3 bg-primary text-white rounded-button hover:bg-emerald-900 transition-colors">立即开通</a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-sky-500 flex flex-col">
+<h3 class="text-xl font-semibold mb-4 flex items-center text-secondary"><i class="ri-vip-crown-2-fill mr-2"></i>王者会员</h3>
+<div class="space-y-3 mb-6">
+<div class="flex items-center justify-between p-2 bg-sky-50 rounded"><span>月付</span><span class="font-semibold text-secondary">¥30/月</span></div>
+<div class="flex items-center justify-between p-2 bg-sky-50 rounded"><span>半年付</span><span class="font-semibold text-secondary">¥160/半年</span></div>
+<div class="flex items-center justify-between p-2 bg-sky-50 rounded"><span>年付</span><span class="font-semibold text-secondary">¥300/年</span></div>
+<div class="flex items-center justify-between p-2 bg-sky-50 rounded"><span>永久</span><span class="font-semibold text-secondary">¥1488</span></div>
+</div>
+<ul class="space-y-3 mb-8 flex-grow text-gray-700">
+<li><i class="ri-check-line text-secondary mr-2"></i>包含钻石会员全部权益</li>
+<li><i class="ri-check-line text-secondary mr-2"></i>后续高级功能权益</li>
+<li><i class="ri-check-line text-secondary mr-2"></i>更好地支持独立开发</li>
+</ul>
+<a href="#download" class="w-full text-center py-3 bg-secondary text-white rounded-button hover:bg-sky-600 transition-colors">立即开通</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-primary/5" id="download">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">立即下载，开始你的本地阅读空间</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">导入小说、调整主题、开启听书，用 AI 帮你更快理解故事。</p>
+<a href="#" class="inline-flex items-center bg-black text-white px-6 py-3 rounded-button hover:bg-gray-900 transition-colors">
+<i class="ri-apple-fill text-3xl mr-3"></i>
+<span class="text-left"><span class="block text-xs">下载于</span><span class="block text-lg font-semibold">App Store</span></span>
+</a>
+</div>
+</section>
+
+<footer class="bg-gray-900 text-white py-12">
 <div class="container mx-auto px-4">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 <div>
 <h3 class="font-['Pacifico'] text-2xl mb-4">阅读阅多</h3>
-<p class="text-gray-400 mb-4">让阅读成为生活中最美好的习惯</p>
+<p class="text-gray-400 leading-7">本地小说阅读、听书与 AI 阅读助手。</p>
 </div>
 <div>
 <h4 class="font-semibold text-lg mb-4">产品</h4>
 <ul class="space-y-2">
 <li><a href="#product-intro" class="text-gray-400 hover:text-white transition-colors">产品介绍</a></li>
-<li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
-<li><a href="book-source.html" class="text-gray-400 hover:text-white transition-colors">书源获取</a></li>
-<li><a href="https://yueduyueyou.github.io/yueduyueyou/privacy.html" class="text-gray-400 hover:text-white transition-colors">隐私协议</a></li>
-<li><a href="https://yueduyueyou.github.io/yueduyueyou/agreement.html" class="text-gray-400 hover:text-white transition-colors">用户协议</a></li>
+<li><a href="#ai-reading" class="text-gray-400 hover:text-white transition-colors">AI 阅读</a></li>
+<li><a href="#listening" class="text-gray-400 hover:text-white transition-colors">听书</a></li>
+<li><a href="book-source.html" class="text-gray-400 hover:text-white transition-colors">本地阅读指南</a></li>
 </ul>
 </div>
 <div>
-<h4 class="font-semibold text-lg mb-4">会员服务</h4>
+<h4 class="font-semibold text-lg mb-4">协议</h4>
 <ul class="space-y-2">
-<li><a href="#member-faq" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
-<li><a href="https://yueduyueyou.github.io/yueduyueyou/member-agreement.html" class="text-gray-400 hover:text-white transition-colors">会员协议</a></li>
-
+<li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">隐私协议</a></li>
+<li><a href="agreement.html" class="text-gray-400 hover:text-white transition-colors">用户协议</a></li>
+<li><a href="member-agreement.html" class="text-gray-400 hover:text-white transition-colors">会员协议</a></li>
+<li><a href="auto-renewal-agreement.html" class="text-gray-400 hover:text-white transition-colors">自动续费协议</a></li>
 </ul>
 </div>
 <div>
 <h4 class="font-semibold text-lg mb-4">联系我们</h4>
-<ul class="space-y-2">
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-0.5 mr-2">
-<i class="ri-mail-line"></i>
-</div>
-<span class="text-gray-400">yueduyueyou999@outlook.com</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-0.5 mr-2">
-<i class="ri-customer-service-2-line"></i>
-</div>
-<span class="text-gray-400">400-888-9999</span>
-</li>
-<li class="flex items-start">
-<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-0.5 mr-2">
-<i class="ri-map-pin-line"></i>
-</div>
-<span class="text-gray-400">北京市海淀区中关村科技园区</span>
-</li>
+<ul class="space-y-3">
+<li class="flex items-start"><i class="ri-mail-line text-gray-400 mt-1 mr-2"></i><span class="text-gray-400">yueduyueyou999@outlook.com</span></li>
 </ul>
 </div>
 </div>
-<div class="pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+<div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
 <p>© 2025 阅读阅多. 保留所有权利.</p>
 </div>
 </div>
