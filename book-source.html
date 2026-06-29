@@ -3,73 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>书源获取 - 阅读阅多</title>
+    <title>本地阅读指南 - 阅读阅多</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <style>
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F5132',
+                        secondary: '#0EA5E9',
+                        accent: '#F59E0B',
+                        paper: '#F7FAF6'
+                    },
+                    borderRadius: {
+                        button: '8px'
+                    }
+                }
+            }
         }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans SC', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <div class="flex items-center mb-6">
-            <a href="https://yueduyueyou.github.io/yueduyueyou/index.html" class="text-primary flex items-center mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
+<body class="bg-paper text-gray-900">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+            <a href="index.html" class="text-primary flex items-center font-medium">
+                <span class="mr-2">←</span>
                 返回首页
             </a>
-            <h1 class="text-3xl font-bold">书源获取</h1>
+            <a href="#" class="bg-primary text-white px-5 py-2 rounded-button text-center">App Store 下载</a>
         </div>
-        <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
-            <div>
-                <h2 class="text-xl font-semibold mb-3">书源获取方式</h2>
-                <ol class="list-decimal pl-6 space-y-4">
-                    <li class="text-gray-700">用户根据书源规则，自定去制定专属自己的书源。完全自定义，满足个性化阅读需求。</li>
-                    <li class="text-gray-700">用户可以通过浏览器搜索"源仓库"、"阅读书源"，或者在一些书友论坛等地方获取书源的.json文件，然后导入应用使用这些书源。</li>
-                    <li class="text-gray-700">可以通过订源功能，获取部分《阅读》的订阅源，部分包含一些书源的网址，可以在里面下载并导入App。</li>
-                </ol>
-            </div>
-            
-            <div>
-                <h2 class="text-xl font-semibold mb-3">书源导入步骤</h2>
-                <ol class="list-decimal pl-6 space-y-4">
-                    <li class="text-gray-700">获取书源文件：从网络搜索、论坛或其他渠道获取书源的JSON文件，或使用订阅功能获取书源链接。</li>
-                    <li class="text-gray-700">打开阅读阅多应用：在您的iOS设备上打开阅读阅多应用，进入"我的"或"设置"页面。</li>
-                    <li class="text-gray-700">选择导入书源：点击"导入书源"或类似选项，选择您获取的书源文件或输入书源链接。</li>
-                    <li class="text-gray-700">确认导入：确认导入后，书源将被添加到您的应用中，您可以立即开始使用这些书源进行阅读。</li>
-                </ol>
-            </div>
 
-            <div>
-                <h2 class="text-xl font-semibold mb-3">书源常见问题</h2>
-                
-                <h3 class="font-semibold mb-2">为什么有些书源无法使用？</h3>
-                <p class="text-gray-700 mb-4">书源可能因为以下原因无法使用：</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li class="text-gray-700">书源已过期或失效</li>
-                    <li class="text-gray-700">网站结构发生变化，导致规则失效</li>
-                    <li class="text-gray-700">网站增加了反爬虫措施</li>
-                    <li class="text-gray-700">网络连接问题</li>
-                    <li class="text-gray-700">如果您发现大部分书源都无法使用，请检查应用是否为最新版本</li>
-                </ul>
-                
-                <h3 class="font-semibold mb-2">如何管理我的书源？</h3>
-                <p class="text-gray-700 mb-4">您可以在应用的"书源管理"页面进行以下操作：</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li class="text-gray-700">启用/禁用特定书源</li>
-                    <li class="text-gray-700">删除不需要的书源</li>
-                    <li class="text-gray-700">编辑书源规则</li>
-                    <li class="text-gray-700">调整书源排序</li>
-                </ul>
-                
-               
-            </div>
+        <section class="bg-white rounded-lg shadow-sm border border-emerald-900/10 p-8 mb-8">
+            <p class="text-primary font-semibold mb-3">阅读阅多</p>
+            <h1 class="text-4xl md:text-5xl font-black mb-5">本地阅读指南</h1>
+            <p class="text-lg text-gray-600 leading-8 max-w-3xl">
+                把本地小说导入阅读阅多后，你可以继续阅读、开启多角色听书、使用 AI 总结与问答，并按自己的习惯调整主题与排版。
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <section class="bg-white rounded-lg shadow-sm border border-emerald-900/10 p-6">
+                <div class="text-3xl font-black text-primary mb-3">01</div>
+                <h2 class="text-xl font-semibold mb-3">导入本地小说</h2>
+                <p class="text-gray-700 leading-7">
+                    通过系统文件、分享菜单或下载后的文本文件导入小说。导入后可在应用内查看书籍、最近阅读和阅读进度。
+                </p>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-sm border border-sky-900/10 p-6">
+                <div class="text-3xl font-black text-secondary mb-3">02</div>
+                <h2 class="text-xl font-semibold mb-3">开始沉浸阅读</h2>
+                <p class="text-gray-700 leading-7">
+                    打开书籍后即可进入阅读器，使用复制、笔记、分享、搜索、净化、语音和词典等文本工具处理当前章节。
+                </p>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-sm border border-amber-900/10 p-6">
+                <div class="text-3xl font-black text-accent mb-3">03</div>
+                <h2 class="text-xl font-semibold mb-3">开启多角色听书</h2>
+                <p class="text-gray-700 leading-7">
+                    在阅读器或听书入口选择语音播放。多角色听书可让旁白和人物对话更有区分度，适合通勤和睡前使用。
+                </p>
+            </section>
         </div>
+
+        <section class="bg-white rounded-lg shadow-sm border border-emerald-900/10 p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6">使用 AI 总结与问答</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-paper rounded-lg p-5">
+                    <h3 class="font-semibold mb-2">章节总结</h3>
+                    <p class="text-gray-700 leading-7">阅读到关键章节时，可让 AI 快速提炼剧情、人物行动和章节重点，方便回顾。</p>
+                </div>
+                <div class="bg-paper rounded-lg p-5">
+                    <h3 class="font-semibold mb-2">全书总结</h3>
+                    <p class="text-gray-700 leading-7">读完或重读前，可以生成全书概览，快速找回主线、支线和角色关系。</p>
+                </div>
+                <div class="bg-paper rounded-lg p-5">
+                    <h3 class="font-semibold mb-2">随书问答</h3>
+                    <p class="text-gray-700 leading-7">对人物关系、伏笔、世界观设定或前文细节提问，减少反复翻找内容的时间。</p>
+                </div>
+                <div class="bg-paper rounded-lg p-5">
+                    <h3 class="font-semibold mb-2">思路整理</h3>
+                    <p class="text-gray-700 leading-7">通过阅读进度、最近阅读和推荐阅读入口整理下一步要看的内容。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-sm border border-emerald-900/10 p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6">调整主题与排版</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold mb-3">阅读器设置</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>背景色、背景图片和背景主色。</li>
+                        <li>文字颜色、字号、行距和段落间距。</li>
+                        <li>页眉页脚、图片拉伸方式和图片位置。</li>
+                        <li>背景图片透明度和护眼主题。</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-3">应用主题</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>让书架、工具栏和阅读器保持一致的视觉风格。</li>
+                        <li>根据白天、夜间、护眼和个人偏好切换主题。</li>
+                        <li>复制默认主题后，可创建自己的常用阅读模板。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-primary text-white rounded-lg p-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">准备好开始本地阅读了吗？</h2>
+            <p class="text-white/80 mb-6">导入小说、调整排版、开启听书，用 AI 帮你理解和回顾故事。</p>
+            <a href="#" class="inline-block bg-white text-primary px-6 py-3 rounded-button font-semibold">App Store 下载</a>
+        </section>
     </div>
 </body>
 </html>
